@@ -1,5 +1,3 @@
-// https://arduinogetstarted.com/tutorials/arduino-button-toggle-led
-
 #include <AntiKeyRepetition.h>
 
 AntiKeyRepetition power(2);
