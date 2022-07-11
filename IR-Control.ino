@@ -1,3 +1,5 @@
+// https://arduinogetstarted.com/tutorials/arduino-button-toggle-led
+
 #include <IRremote.h>
 
 #define FORWARD 0
@@ -48,11 +50,13 @@ void loop()
 
         if (results.value == 0xA85740BF)
         {
+            Serial.println("forward");
             driveArdumoto(MOTOR_A, FORWARD, 255);
             driveArdumoto(MOTOR_B, FORWARD, 255);
         }
         else if (results.value == 0xA85710EF)
         {
+            Serial.println("backward");
             driveArdumoto(MOTOR_A, REVERSE, 255);
             driveArdumoto(MOTOR_B, REVERSE, 255);
         }
@@ -63,12 +67,6 @@ void loop()
         else if (results.value == 0xA85720DF)
         {
             turn(-1);
-        }
-        else if (results.value == 0xA857C03F)
-        {
-            Serial.println("forward-right");
-            stopArdumoto(MOTOR_A);
-            driveArdumoto(MOTOR_B, FORWARD, 255);
         }
         else if (results.value == 0xA857906F)
         {
@@ -81,6 +79,12 @@ void loop()
             Serial.println("backward-left");
             driveArdumoto(MOTOR_A, REVERSE, 127);
             driveArdumoto(MOTOR_B, REVERSE, 255);
+        }
+        else if (results.value == 0xA857C03F)
+        {
+            Serial.println("forward-right");
+            stopArdumoto(MOTOR_A);
+            driveArdumoto(MOTOR_B, FORWARD, 255);
         }
         else if (results.value == 0xA857807F)
         {
